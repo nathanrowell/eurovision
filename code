@@ -1,0 +1,685 @@
+import random
+import time
+import operator
+from dataclasses import dataclass
+from colorama import Fore, Back, Style
+timer = 0
+@dataclass
+class Country:
+    name: str
+    points: int
+    spoints: int
+    jskill: int
+    tskill: int
+    sjury: int
+    stele: int
+    jury: int
+    tele: int
+    prev: int
+    jplacement: int
+    tplacement: int
+    sjplacement: int
+    stplacement: int
+    splacement: int
+    placement: int
+    odds: int
+    televoted: bool
+
+
+country1= Country("Albania", 0, 0,5,3,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country2 = Country("Andorra", 0, 0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country3 = Country("Armenia", 0, 0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country4 = Country("Australia", 0,0,8,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country5 = Country("Austria", 0, 0,6,8,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country6 = Country("Azerbaijan", 0,0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country7 = Country("Belarus", 0, 0,4,3,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country8 = Country("Belgium", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country9 = Country("Bulgaria", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country10 = Country("Croatia", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country11 = Country("Cyprus", 0, 0,5,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country12 = Country("Czechia", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country13 = Country("Denmark", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country14 = Country("Estonia", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country15 = Country("Finland", 0, 0,5,9,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country16 = Country("France", 0, 0,8,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country17 = Country("Georgia", 0, 0,3,2,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country18 = Country("Germany", 0, 0,6,4,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country19 = Country("Greece", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country20 = Country("Hungary", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country21 = Country("Iceland", 0, 0,6,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country22 = Country("Ireland", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country23 = Country("Israel", 0, 0,6,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country24 = Country("Italy", 0, 0,9,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country25 = Country("Latvia", 0, 0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country26 = Country("Lithuania", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country27 = Country("Luxembourg", 0, 0,6,4,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country28 = Country("Malta", 0, 0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country29 = Country("Moldova", 0, 0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country30 = Country("Monaco", 0, 0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country31 = Country("Montenegro", 0, 0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country32 = Country("Netherlands", 0, 0,7,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country33 = Country("North Macedonia", 0, 0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country34 = Country("Norway", 0, 0,6,9,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country35 = Country("Poland", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country36 = Country("Portugal", 0, 0,7,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country37 = Country("Romania", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country38 = Country("Russia", 0, 0,6,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country39 = Country("San Marino", 0, 0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country40 = Country("Serbia", 0, 0,6,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country41 = Country("Slovakia", 0, 0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country42 = Country("Spain", 0, 0,6,8,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country43 = Country("Sweden", 0, 0,10,7,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country44 = Country("Switzerland", 0, 0,6,6,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country45 = Country("Ukraine", 0, 0,7,10,0,0,0,0,0,0,0,0,0,0,0,0,False)
+country46 = Country("United Kingdom", 0, 0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,False)
+countries = [country1,country2,country3,country4,country5,country6,country7,country8,country9,country10,country11,country12,country13,country14,country15,country17,country19,country20,country21,country22,country23,country25,country26,country27,country28,country29,country30,country31,country32,country33,country34,country35,country36,country37,country38,country39,country40,country41,country43,country44,country45]
+finalists = [country16, country18, country24, country42, country46]
+def randomizeStats(countries,finalists):
+    for country in countries:
+        country.jskill = random.randint(1,10)
+        country.tskill = random.randint(1,10)
+    for country in finalists:
+        country.jskill = random.randint(1,10)
+        country.tskill = random.randint(1,10)
+
+def separateSemis(countries):
+    half = int(len(countries)/2)
+    random.shuffle(countries)
+    semi1 = countries[:half]
+    semi2 = countries[half:]
+    return semi1, semi2
+
+def semifinal1(countries):
+    print("Running Order:")
+    n = 1
+    for country in countries:
+        print(str(n) + "." + country.name)
+        n += 1
+    for country in countries:
+        if ((country.jskill + country.tskill) >= 15 and (country.jskill + country.tskill) < 17):
+            print(country.name + " had an AMAZING performance")
+        if ((country.jskill + country.tskill) >= 17):
+            print(country.name + " had a PERFECT performance")
+        if ((country.jskill + country.tskill) >= 12 and (country.jskill + country.tskill) < 15):
+            print(country.name + " had an GREAT performance")
+        if ((country.jskill + country.tskill) >= 9 and (country.jskill + country.tskill) < 12):
+            print(country.name + " had an ALRIGHT performance")
+        if ((country.jskill + country.tskill) < 9):
+            print(country.name + " had an Meh performance")
+        time.sleep(timer*1)
+    totalodds = 0
+    m = 1
+    for country in countries:
+        country.odds =  (country.jskill + country.tskill)*(country.jskill + country.tskill)+ (country.jskill + country.tskill)*(country.jskill + country.tskill) + m
+        totalodds += country.odds*country.odds
+        m += 1
+    m = 1
+    countries.sort(key=operator.attrgetter('odds'))
+    countries.reverse()
+    for country in countries:
+        percent = (country.odds*country.odds / totalodds )
+        percent = percent*100
+        percent = round(percent,1)
+        print(str(m) + ". " + country.name + " Winning Chance: " + str(percent) + "%")
+        m += 1
+    keyboardinput = 'AAA'
+    while keyboardinput != "":
+        keyboardinput = input()
+    newList = []
+    for country in countries:
+        n = country.jskill
+        while (n > 0):
+            newList.append(country.name)
+            n -= 1
+    length = len(newList)
+    for country in countries:
+        ineligible = [""]
+        ineligible.append(country.name)
+        n = 10
+        while (n > 0):
+            name = ""
+            while (name in ineligible):
+                randomnum = random.randint(0,length-1)
+                name = newList[randomnum]
+            if n == 10:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.sjury += 12
+            if n == 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.sjury += 10
+            if n < 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.sjury += n
+            n -= 1
+            ineligible.append(name)
+    for country in countries:
+        newList = []
+        for country in countries:
+            n = country.tskill
+            while (n > 0):
+                newList.append(country.name)
+                n -= 1
+            ineligible = [""]
+            n = 10
+    length = len(newList)
+    for country in countries:
+        ineligible = [""]
+        ineligible.append(country.name)
+        n = 10
+        while (n > 0):
+            name = ""
+            while (name in ineligible):
+                randomnum = random.randint(0,length-1)
+                name = newList[randomnum]
+            if n == 10:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.stele += 12
+            if n == 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.stele += 10
+            if n < 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.stele += n
+            n -= 1
+            ineligible.append(name)
+    for country in countries:
+        country.spoints = country.stele + country.sjury
+    countries.sort(key=operator.attrgetter('sjury'))
+    countries.reverse()
+    n = 1
+    print("JURY POINTS\n")
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name)
+        else:
+            print(str(n) + ". " + country.name)
+        country.sjplacement = n
+        n += 1
+    countries.sort(key=operator.attrgetter('stele'))
+    countries.reverse()
+    time.sleep(timer*8)
+    print("TELE POINTS\n")
+    n = 1
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name)
+        else:
+            print(str(n) + ". " + country.name)
+        country.stplacement = n
+        n += 1
+    countries.sort(key=operator.attrgetter('spoints'))
+    countries.reverse()
+    time.sleep(timer*8)
+    print("Overall\n")
+    n = 1
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name + " QUALIFIED - " + str(country.spoints) + " points")
+        else:
+            print(str(n) + ". " + country.name + " " + str(country.spoints) + " points")
+        country.splacement = n
+        n += 1
+    n = 1
+    countries.sort(key=operator.attrgetter('sjury'))
+    countries.reverse()
+    print("JURY POINTS\n")
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name + " " + str(country.sjury) + " points")
+        else:
+            print(str(n) + ". " + country.name + " " + str(country.sjury) + " points")
+        n += 1
+    countries.sort(key=operator.attrgetter('stele'))
+    countries.reverse()
+    print("TELE POINTS\n")
+    n = 1
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name + "  " + str(country.stele) + " points")
+        else:
+            print(str(n) + ". " + country.name + " " + str(country.stele) + " points")
+        n += 1
+    countries.sort(key=operator.attrgetter('spoints'))
+    countries.reverse()
+    n = 0
+    for country in countries:
+        if (n < 10):
+            finalists.append(country)
+        n += 1
+    return countries
+def semifinal2(countries):
+    print("Running Order:")
+    n = 1
+    for country in countries:
+        print(str(n) + "." + country.name)
+        n += 1
+    for country in countries:
+        if ((country.jskill + country.tskill) >= 15 and (country.jskill + country.tskill) < 17):
+            print(country.name + " had an AMAZING performance")
+        if ((country.jskill + country.tskill) >= 17):
+            print(country.name + " had a PERFECT performance")
+        if ((country.jskill + country.tskill) >= 12 and (country.jskill + country.tskill) < 15):
+            print(country.name + " had an GREAT performance")
+        if ((country.jskill + country.tskill) >= 9 and (country.jskill + country.tskill) < 12):
+            print(country.name + " had an ALRIGHT performance")
+        if ((country.jskill + country.tskill) < 9):
+            print(country.name + " had an Meh performance")
+        time.sleep(timer*1)
+    newList = []
+    totalodds = 0
+    m = 1
+    for country in countries:
+        country.odds =  (country.jskill + country.tskill)*(country.jskill + country.tskill)+ (country.jskill + country.tskill)*(country.jskill + country.tskill) + m
+        totalodds += country.odds*country.odds
+        m += 1
+    m = 1
+    countries.sort(key=operator.attrgetter('odds'))
+    countries.reverse()
+    for country in countries:
+        percent = (country.odds*country.odds / totalodds )
+        percent = percent*100
+        percent = round(percent,1)
+        print(str(m) + ". " + country.name + " Winning Chance: " + str(percent) + "%")
+        m += 1
+    keyboardinput = 'AAA'
+    while keyboardinput != "":
+        keyboardinput = input()
+    for country in countries:
+        n = country.jskill
+        while (n > 0):
+            newList.append(country.name)
+            n -= 1
+    length = len(newList)
+    for country in countries:
+        ineligible = [""]
+        ineligible.append(country.name)
+        n = 10
+        while (n > 0):
+            name = ""
+            while (name in ineligible):
+                randomnum = random.randint(0,length-1)
+                name = newList[randomnum]
+            if n == 10:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.sjury += 12
+            if n == 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.sjury += 10
+            if n < 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.sjury += n
+            n -= 1
+            ineligible.append(name)
+    newList = []
+    for country in countries:
+        n = country.tskill
+        while (n > 0):
+            newList.append(country.name)
+            n -= 1
+    length = len(newList)
+    for country in countries:
+        ineligible = [""]
+        ineligible.append(country.name)
+        n = 10
+        while (n > 0):
+            name = ""
+            while (name in ineligible):
+                randomnum = random.randint(0,length-1)
+                name = newList[randomnum]
+            if n == 10:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.stele += 12
+            if n == 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.stele += 10
+            if n < 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.stele += n
+            n -= 1
+            ineligible.append(name)
+    for country in countries:
+        country.spoints = country.stele + country.sjury
+    countries.sort(key=operator.attrgetter('sjury'))
+    countries.reverse()
+    n = 1
+    print("JURY POINTS\n")
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name)
+        else:
+            print(str(n) + ". " + country.name)
+        country.sjplacement = n
+        n += 1
+    countries.sort(key=operator.attrgetter('stele'))
+    countries.reverse()
+    time.sleep(timer*8)
+    print("TELE POINTS\n")
+    n = 1
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name)
+        else:
+            print(str(n) + ". " + country.name)
+        country.stplacement = n
+        n += 1
+    countries.sort(key=operator.attrgetter('spoints'))
+    countries.reverse()
+    time.sleep(timer*8)
+    print("Overall\n")
+    n = 1
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name + " QUALIFIED - " + str(country.spoints) + " points")
+        else:
+            print(str(n) + ". " + country.name + " " + str(country.spoints) + " points")
+        country.splacement = n
+        n += 1
+    n = 1
+    countries.sort(key=operator.attrgetter('sjury'))
+    countries.reverse()
+    print("JURY POINTS\n")
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name + " " + str(country.sjury) + " points")
+        else:
+            print(str(n) + ". " + country.name + " " + str(country.sjury) + " points")
+        n += 1
+    countries.sort(key=operator.attrgetter('stele'))
+    countries.reverse()
+    print("TELE POINTS\n")
+    n = 1
+    for country in countries:
+        if n < 11:
+            print(str(n) + ". " + country.name + "  " + str(country.stele) + " points")
+        else:
+            print(str(n) + ". " + country.name + " " + str(country.stele) + " points")
+        n += 1
+    countries.sort(key=operator.attrgetter('spoints'))
+    countries.reverse()
+    n = 0
+    for country in countries:
+        if (n < 10):
+            finalists.append(country)
+        n += 1
+    return countries
+def final(countries,finalists):
+    for country in finalists2:
+        if ((country.jskill + country.tskill) >= 15 and (country.jskill + country.tskill) < 17):
+            print(country.name + " had an AMAZING performance")
+        if ((country.jskill + country.tskill) >= 17):
+            print(country.name + " had a PERFECT performance")
+        if ((country.jskill + country.tskill) >= 12 and (country.jskill + country.tskill) < 15):
+            print(country.name + " had an GREAT performance")
+        if ((country.jskill + country.tskill) >= 9 and (country.jskill + country.tskill) < 12):
+            print(country.name + " had an ALRIGHT performance")
+        if ((country.jskill + country.tskill) < 9):
+            print(country.name + " had an Meh performance")
+        time.sleep(timer*1)
+    for country in finalists:
+        if (country.splacement == 0):
+            country.odds = (country.jskill + country.tskill)*(country.jskill + country.tskill) + (country.tskill + country.jskill)*(country.jskill + country.tskill)+ (country.jskill + country.tskill)*(country.jskill + country.tskill)
+        else:
+            country.odds = (country.splacement-21)*-1*(country.splacement-21)*-1* + (country.jskill + country.tskill)*(country.jskill + country.tskill)+ (country.jskill + country.tskill)*(country.jskill + country.tskill)
+    m = 1
+    finalists.sort(key=operator.attrgetter('odds'))
+    finalists.reverse()
+    print("Winning Odds:")
+    
+    totalodds = 0
+    for country in finalists:
+        totalodds += (country.odds*country.odds)
+    for country in finalists:
+        percent = (country.odds*country.odds / totalodds )
+        percent = percent*100
+        percent = round(percent,1)
+        print(str(m) + ". " + country.name + " Winning Chance: " + str(percent) + "%")
+        m += 1
+    keyboardinput = 'AAA'
+    while keyboardinput != "":
+        keyboardinput = input()
+    newList = []
+    for country in finalists:
+        n = country.jskill*country.jskill*country.jskill
+        while (n > 0):
+            newList.append(country.name)
+            n -= 1
+    length = len(newList)
+    m = 1
+
+    total = len(countries)
+    for country in countries:
+        ineligible = [""]
+        ineligible.append(country.name)
+        n = 10
+        twelve = ""
+        ten = ""
+        eight = ""
+        print(" ")
+        print(country.name + " is now giving out their points! " + str(m) + "/" + str(total) + "\n")
+        m += 1
+        while (n > 0):
+            name = ""
+            
+            
+            while (name in ineligible):
+                randomnum = random.randint(0,length-1)
+                name = newList[randomnum]
+            if n == 10:
+                for country1 in finalists:
+                    if country1.name == name:
+                        country1.jury += 12
+                        twelve = country1.name
+                        country1.prev = 12
+            if n == 9:
+                for country1 in finalists:
+                    if country1.name == name:
+                        country1.jury += 10
+                        ten = country1.name
+                        country1.prev = 10
+            if n == 8:
+                for country1 in finalists:
+                    if country1.name == name:
+                        country1.jury += n
+                        eight = country1.name
+                        country1.prev = 8
+                        
+            if n < 8:
+                for country1 in finalists:
+                    if country1.name == name:
+                        country1.jury += n
+                        country1.prev = n
+            
+                        
+                
+            n -= 1
+            ineligible.append(name)
+        print("8 points to...")
+        time.sleep(timer*0.75)
+        print(eight)
+        print("10 points to...")
+        time.sleep(timer*0.75)
+        print(ten)
+        print("12 points to...")
+        time.sleep(timer*0.75)
+        print(twelve)
+        keyboardinput = 'AAA'
+        while keyboardinput != "":
+            keyboardinput = input()
+        finalists.sort(key=operator.attrgetter('jury'))
+        finalists.reverse()
+        n = 1
+        print("JURY POINTS\n")
+        for country in finalists:
+            print(str(n) + ". " + country.name + " [" + str(country.jury) + "] +" + str(country.prev))
+            n += 1
+        for country2 in finalists:
+            country2.prev = 0
+    newList = []
+    for country in finalists:
+        n = country.tskill*country.tskill*country.tskill
+        while (n > 0):
+            newList.append(country.name)
+            n -= 1
+    length = len(newList)
+    for country in countries:
+        ineligible = [""]
+        ineligible.append(country.name)
+        n = 10
+        while (n > 0):
+            name = ""
+            while (name in ineligible):
+                randomnum = random.randint(0,length-1)
+                name = newList[randomnum]
+            if n == 10:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.tele += 12
+            if n == 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.tele += 10
+            if n < 9:
+                for country1 in countries:
+                    if country1.name == name:
+                        country1.tele += n
+            n -= 1
+            ineligible.append(name)
+    for country in finalists:
+        country.points = country.jury
+        country.prev = 0 
+    finalists.sort(key=operator.attrgetter('jury'))
+    n = 1
+    for country in finalists:
+        country.jplacement = n
+        n += 1
+    keyboardinput = 'AAA'
+    while keyboardinput != "":
+        keyboardinput = input()
+    for country in finalists:
+        print(" ")
+        print(country.name + " has received... ")
+        time.sleep(timer*5)
+        country.televoted = True
+        print(str(country.tele) + " from the televote")
+        print(" ")
+        country.points += country.tele
+        country.prev = country.tele
+        finalists.sort(key=operator.attrgetter('points'))
+        finalists.reverse()
+        n = 1
+        for country2 in finalists:
+            if (country2.televoted):
+                print(str(n) + ". " + Style.RESET_ALL + getattr(Fore, 'CYAN') + country2.name + Style.RESET_ALL +  " [" + str(country2.points) + "] (+" + str(country2.prev)+ ")")
+            else:
+                print(str(n) + ". " + country2.name + " [" + str(country2.points) + "] (+" + str(country2.prev)+ ")")
+            n += 1
+        time.sleep(timer*4)
+        finalists.sort(key=operator.attrgetter('jplacement'))
+        print(" ")
+    countries.sort(key=operator.attrgetter('tele'))
+    
+    countries.reverse()
+    n = 1
+    for country in countries:
+        country.tplacement = n
+        n += 1
+    countries.sort(key=operator.attrgetter('jury'))
+    countries.reverse()
+    n = 1
+    for country in countries:
+        country.jplacement = n
+        n += 1
+    countries.sort(key=operator.attrgetter('points'))
+    countries.reverse()
+    n = 1
+    for country in countries:
+        country.placement = n
+        n += 1
+        
+
+countries = [country1,country2,country3,country4,country5,country6,country7,country8,country9,country10,country11,country12,country13,country14,country15,country17,country19,country20,country21,country22,country23,country25,country26,country27,country28,country29,country30,country31,country32,country33,country34,country35,country36,country37,country38,country39,country40,country41,country43,country44,country45,country16, country18, country24, country42, country46]
+
+semi1 = [country1,country4,country5,country7,country8,country11,country12,country15,country17,country21,country22,country26,country27,country30,country31,country34,country35,country38,country39,country43,country44]
+semi2 = [country2,country3,country6,country9,country10,country13,country14,country19,country20,country23,country25,country28,country29,country32,country33,country36,country37,country40,country41,country45]
+#semi1, semi2 = separateSemis(countries)
+random.shuffle(semi1)
+random.shuffle(semi2)
+randomizeStats(countries,finalists)
+finalists2 = [country16, country18, country24, country42, country46]
+
+for country in finalists:
+    country.splacement = 2
+semi1results = semifinal1(semi1)
+keyboardinput = 'AAA'
+while keyboardinput != "":
+    keyboardinput = input()
+semi2results = semifinal2(semi2)
+keyboardinput = 'AAA'
+while keyboardinput != "":
+    keyboardinput = input()
+final = final(countries,finalists)
+
+for country in countries:
+    if country.points == 0:
+        country.points = country.spoints
+countries.sort(key=operator.attrgetter('spoints'))
+countries.reverse()
+n = 26
+for country in countries:
+    if country.placement > 25:
+        country.placement = n
+        n += 1
+countries.sort(key=operator.attrgetter('placement'))
+print("                ST SJ SP T  J  P")
+for country in countries:
+    n = 16
+    length = len(country.name)
+    n = n - length
+    printed = country.name 
+    while (n > 0):
+        printed += " "
+        n -= 1
+    printed += str(country.stplacement)
+    if len(str(country.stplacement)) == 1:
+        printed += " "
+    printed += " "
+    printed += str(country.sjplacement)
+    if len(str(country.sjplacement)) == 1:
+        printed += " "
+    printed += " "
+    printed += str(country.splacement)
+    if len(str(country.splacement)) == 1:
+        printed += " "
+    printed += " "
+    printed += str(country.tplacement)
+    if len(str(country.tplacement)) == 1:
+        printed += " "
+    printed += " "
+    printed += str(country.jplacement)
+    if len(str(country.jplacement)) == 1:
+        printed += " "
+    printed += " "
+    printed += str(country.placement)
+    if len(str(country.placement)) == 1:
+        printed += " "
+    printed += " "
+    #printed += (" " + str(country.sjplacement) + " " +  str(country.splacement) + " " + str(country.tplacement) + " " + str(country.jplacement) + " " + str(country.placement))
+    
+    print(printed)
+
+for country in countries:
+    print(country.name + str(country.tskill) + str(country.jskill))
+for country in finalists:
+    print(country.name + str(country.tskill) + str(country.jskill))
